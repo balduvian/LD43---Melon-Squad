@@ -36,7 +36,7 @@ public class Main {
 	}
 	
 	private Main() {
-		Window window = new Window(false, "Melon Squad", true);
+		Window window = new Window(true, "Melon Squad", true);
 		
 		window.setIcon("res/textures/icon.png");
 		

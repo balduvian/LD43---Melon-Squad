@@ -1,11 +1,13 @@
 package game.scenes.game.entities;
 
 import cnge.core.Base;
+import cnge.core.BlockSet;
 import cnge.core.Entity;
 import cnge.core.Hitbox;
 import cnge.graphics.Shader;
 import cnge.graphics.Transform;
 import cnge.graphics.texture.Texture;
+import game.MelonBlock;
 
 import static game.scenes.game.GameAssets.*;
 
@@ -41,7 +43,21 @@ public class CarrotBullet extends Entity {
 		transform.moveX((float)(velocityX * Base.time));
 		transform.moveY((float)(velocityY * Base.time));
 		
-		if(currentMap.getBlockSet().get(currentMap.mapAccess(currentMap.atX(transform.x), currentMap.atY(transform.y))).solid) {
+		BlockSet<MelonBlock> b = currentMap.getBlockSet();
+		
+		if(b.get(currentMap.mapAccess(currentMap.atX(transform.x + box.x), currentMap.atY(transform.y + box.y))).solid) {
+			return 1;
+		}
+		
+		if(b.get(currentMap.mapAccess(currentMap.atX(transform.x + box.x + box.width), currentMap.atY(transform.y + box.y))).solid) {
+			return 1;
+		}
+		
+		if(b.get(currentMap.mapAccess(currentMap.atX(transform.x + box.x), currentMap.atY(transform.y + box.y + box.height))).solid) {
+			return 1;
+		}
+		
+		if(b.get(currentMap.mapAccess(currentMap.atX(transform.x + box.x + box.width), currentMap.atY(transform.y + box.y + box.height))).solid) {
 			return 1;
 		}
 		

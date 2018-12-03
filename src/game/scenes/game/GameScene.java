@@ -429,7 +429,7 @@ public class GameScene extends Scene<GameScene> {
 			}
 		}
 		
-		if(pressRestart) {
+		if(!lose && pressRestart) {
 			lose();
 		}
 		
@@ -499,7 +499,7 @@ public class GameScene extends Scene<GameScene> {
 			melonDeathTimer.update();
 			bomberTimer.update();
 			
-			if(pressRestart) {
+			if(!lose && pressRestart) {
 				sparkSound.stop();
 				lose();
 			}
